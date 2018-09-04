@@ -15,7 +15,8 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:i18n-ssr": "npm run build:client-and-server-bundles-i18n && npm run compile:server",
     "compile:server": "tsc -p server.tsconfig.json",
-    "serve:ssr": "node dist/server"
+    "serve:ssr": "node dist/server",
+    "serve:browser": "serve dist/browser"
   },
   "private": true,
   "dependencies": {
