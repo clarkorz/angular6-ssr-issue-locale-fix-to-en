@@ -1,31 +1,16 @@
 import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { locales } from './locales.values';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `<h1>Hello</h1><p>locale is {{locale}}</p>`
 })
-export class AppComponent {
-  locales = [];
-  currentUrl = "";
+export class AppComponent implements OnInit {
 
-  constructor(
-    @Inject(LOCALE_ID) public locale: string,
-    private router: Router
-  ) { }
+  constructor(@Inject(LOCALE_ID) public locale: string) {
+    console.log(`LOCALE_ID is ${locale}`);
+  }
 
   ngOnInit() {
-
-    this.locales = locales;
-
-    this.router.events
-    .pipe(filter(event => event instanceof NavigationEnd))
-     .subscribe((event:NavigationEnd) => {
-       this.currentUrl = this.router.url;
-     });
-
   }
 }
